@@ -48,7 +48,7 @@ export default class AppBarProduct extends Vue {
       sku: this.sku,
       name: this.name,
       price: this.price,
-      product_type: ProductType.BOOK,
+      product_type: this.product_type,
       size: this.size,
       height: this.height,
       width: this.width,
