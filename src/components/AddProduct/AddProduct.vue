@@ -33,7 +33,7 @@
         </v-row>
       </v-container>
 
-      <v-container>
+      <v-container fluid>
         <v-row justify="start" align="center">
           <v-col cols="2" sm="1" md="1" lg="1">
             <span>Name</span>
@@ -49,7 +49,9 @@
             ></v-text-field>
           </v-col>
         </v-row>
+      </v-container>
 
+      <v-container fluid>
         <v-row justify="start" align="center">
           <v-col cols="2" sm="1" md="1" lg="1">
             <span>Price</span>
