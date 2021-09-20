@@ -17,7 +17,13 @@
 
     <v-container fluid v-if="productList.length > 0" class="my-12 mx-0">
       <v-row justify="center" align="center">
-        <v-col v-for="product in productList" :key="product.id" cols="3">
+        <v-col
+          v-for="product in productList"
+          :key="product.id"
+          cols="12"
+          sm="3"
+          md="3"
+        >
           <v-card class="pa-0" color="secondary" height="300">
             <v-card-actions>
               <v-checkbox

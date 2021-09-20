@@ -15,13 +15,12 @@
     />
 
     <v-form v-model="valid" id="product_form">
-      <v-row class="ml-3">
-        <v-col cols="12">
-          <v-row justify="center" align="center">
-            <div style="width:40px">
-              <span>SKU</span>
-            </div>
-
+      <v-container fluid>
+        <v-row justify="start" align="center">
+          <v-col cols="2" sm="1" md="1" lg="1">
+            <span>SKU</span>
+          </v-col>
+          <v-col cols="6" sm="10" md="10" lg="11">
             <v-text-field
               id="sku"
               v-model="sku"
@@ -30,14 +29,16 @@
               outlined
               required
             ></v-text-field>
-          </v-row>
-        </v-col>
+          </v-col>
+        </v-row>
+      </v-container>
 
-        <v-col cols="12">
-          <v-row justify="center" align="center">
-            <div style="width:40px">
-              <span>Name</span>
-            </div>
+      <v-container>
+        <v-row justify="start" align="center">
+          <v-col cols="2" sm="1" md="1" lg="1">
+            <span>Name</span>
+          </v-col>
+          <v-col cols="6" sm="10" md="10" lg="11">
             <v-text-field
               id="name"
               v-model="name"
@@ -46,14 +47,14 @@
               label="Name"
               required
             ></v-text-field>
-          </v-row>
-        </v-col>
+          </v-col>
+        </v-row>
 
-        <v-col cols="12">
-          <v-row justify="center" align="center">
-            <div style="width:40px">
-              <span>Price</span>
-            </div>
+        <v-row justify="start" align="center">
+          <v-col cols="2" sm="1" md="1" lg="1">
+            <span>Price</span>
+          </v-col>
+          <v-col cols="6" sm="10" md="10" lg="11">
             <v-text-field
               id="price"
               v-model="price"
@@ -65,42 +66,49 @@
               @change="convertPriceToString"
               append-icon="mdi-currency-usd"
             ></v-text-field>
-          </v-row>
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-form>
 
-    <v-row justify="center" align="center" class="ml-3">
-      <div style="width:100px">
-        <span>Type Switcher</span>
-      </div>
-      <v-select
-        id="#productType"
-        v-model="selectedProductType"
-        :items="productTypes"
-        label="Type Switcher"
-        dense
-        outlined
-      ></v-select>
-    </v-row>
+    <v-container fluid>
+      <v-row justify="start" align="center">
+        <v-col cols="4" sm="2" md="2" lg="1">
+          <span>Type Switcher</span>
+        </v-col>
+        <v-col cols="6" sm="10" md="10" lg="11">
+          <v-select
+            id="#productType"
+            v-model="selectedProductType"
+            :items="productTypes"
+            label="Type Switcher"
+            dense
+            outlined
+          ></v-select>
+        </v-col>
+      </v-row>
+    </v-container>
 
     <div v-if="selectedProductType">
       <v-container fluid v-if="selectedProductType === 'DVD'">
         <v-card>
           <v-col>
-            <v-row justify="center" align="center" class="ml-2">
-              <div style="width:70px">
+            <v-row justify="start" align="center">
+              <v-col cols="3" sm="2" md="2" lg="1">
                 <span>Size (MB)</span>
-              </div>
-              <v-text-field
-                v-model="size"
-                id="size"
-                max-width="200"
-                label="Size"
-                outlined
-                type="number"
-                :rules="priceRules"
-              ></v-text-field>
+              </v-col>
+              <v-col cols="6" sm="10" md="10" lg="11">
+                <v-text-field
+                  v-model="size"
+                  id="size"
+                  max-width="200"
+                  label="Size"
+                  outlined
+                  type="number"
+                  :rules="priceRules"
+                >
+                </v-text-field>
+              </v-col>
             </v-row>
           </v-col>
           <v-col>
@@ -113,51 +121,60 @@
       <v-container fluid v-if="selectedProductType === 'FURNITURE'">
         <v-card>
           <v-col>
-            <v-row justify="center" align="center" class="ml-2">
-              <div style="width:90px">
+            <v-row justify="start" align="center">
+              <v-col cols="3" sm="2" md="2" lg="1">
                 <span>Height (CM)</span>
-              </div>
-              <v-text-field
-                id="height"
-                v-model="height"
-                max-width="200"
-                label="Height (CM)"
-                outlined
-                type="number"
-                :rules="priceRules"
-              ></v-text-field>
+              </v-col>
+              <v-col cols="6" sm="10" md="10" lg="11">
+                <v-text-field
+                  id="height"
+                  v-model="height"
+                  max-width="200"
+                  label="Height (CM)"
+                  outlined
+                  type="number"
+                  :rules="priceRules"
+                >
+                </v-text-field>
+              </v-col>
             </v-row>
           </v-col>
           <v-col>
-            <v-row justify="center" align="center" class="ml-2">
-              <div style="width:90px">
+            <v-row justify="start" align="center">
+              <v-col cols="3" sm="2" md="2" lg="1">
                 <span>Width (CM)</span>
-              </div>
-              <v-text-field
-                id="width"
-                v-model="width"
-                max-width="200"
-                label="Width (CM)"
-                outlined
-                type="number"
-                :rules="priceRules"
-              ></v-text-field>
+              </v-col>
+              <v-col cols="6" sm="10" md="10" lg="11">
+                <v-text-field
+                  id="width"
+                  v-model="width"
+                  max-width="200"
+                  label="Width (CM)"
+                  outlined
+                  type="number"
+                  :rules="priceRules"
+                >
+                </v-text-field>
+              </v-col>
             </v-row>
           </v-col>
           <v-col>
-            <v-row justify="center" align="center" class="ml-2">
-              <div style="width:90px">
+            <v-row justify="start" align="center">
+              <v-col cols="3" sm="2" md="2" lg="1">
                 <span>Length (CM)</span>
-              </div>
-              <v-text-field
-                id="length"
-                v-model="length"
-                max-width="200"
-                label="Length (CM)"
-                outlined
-                :rules="priceRules"
-                type="number"
-              ></v-text-field>
+              </v-col>
+              <v-col cols="6" sm="10" md="10" lg="11">
+                <v-text-field
+                  id="length"
+                  v-model="length"
+                  max-width="200"
+                  label="Length (CM)"
+                  outlined
+                  :rules="priceRules"
+                  type="number"
+                >
+                </v-text-field>
+              </v-col>
             </v-row>
           </v-col>
           <v-col>
@@ -170,19 +187,22 @@
       <v-container fluid v-if="selectedProductType === 'BOOK'">
         <v-card>
           <v-col>
-            <v-row justify="center" align="center" class="ml-2">
-              <div style="width:90px">
+            <v-row justify="start" align="center">
+              <v-col cols="3" sm="2" md="2" lg="1">
                 <span>Weight (KG)</span>
-              </div>
-              <v-text-field
-                id="weight"
-                v-model="weight"
-                max-width="200"
-                label="Weight (KG)"
-                outlined
-                type="number"
-                :rules="priceRules"
-              ></v-text-field>
+              </v-col>
+              <v-col cols="6" sm="10" md="10" lg="11">
+                <v-text-field
+                  id="weight"
+                  v-model="weight"
+                  max-width="200"
+                  label="Weight (KG)"
+                  outlined
+                  type="number"
+                  :rules="priceRules"
+                >
+                </v-text-field>
+              </v-col>
             </v-row>
           </v-col>
           <v-col>
