@@ -6,6 +6,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
+        id="save"
         :disabled="disabledButton"
         @click="createNewProduct"
         class="mr-1"
@@ -13,7 +14,7 @@
       >
         <span class="white--text">Save</span>
       </v-btn>
-      <v-btn color="brand" @click="changeRoute">
+      <v-btn color="brand" @click="changeRoute" id="cancel">
         <span class="white--text">Cancel</span>
       </v-btn>
     </v-app-bar>
@@ -79,10 +80,9 @@ export default class AppBarProduct extends Vue {
       !this.valid ||
       !this.compProductType ||
       (this.productType === "Book" && this.weight.length === 0) ||
-      (this.productType === "Furniture" &&
-        this.height.length === 0 ||
+      (this.productType === "Furniture" && this.height.length === 0) ||
         this.width.length === 0 ||
-        this.length.length === 0) ||
+        this.length.length === 0 ||
       (this.productType === "Dvd" && this.size.length === 0)
     )
       return true;

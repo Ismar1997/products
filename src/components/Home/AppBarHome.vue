@@ -5,10 +5,11 @@
         <span class="white--text">Product List</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn @click="changeRoute" class="mr-3" color="brand">
+      <v-btn @click="changeRoute" class="mr-3" color="brand" id="add">
         <span class="white--text">ADD</span>
       </v-btn>
       <v-btn
+        id="delete"
         @click="deleteProducts"
         :disabled="disabledMassDelete"
         color="brand"
