@@ -27,7 +27,7 @@
           <v-card class="pa-0" color="secondary" height="300">
             <v-card-actions>
               <v-checkbox
-                class="pa-0"
+                class="pa-0 delete-checkbox"
                 v-model="product.checked"
                 @click="addProductToSelected(product)"
               ></v-checkbox>

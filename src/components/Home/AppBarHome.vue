@@ -9,7 +9,7 @@
         <span class="white--text">ADD</span>
       </v-btn>
       <v-btn
-        id="delete"
+        id="delete-product-btn"
         @click="deleteProducts"
         :disabled="disabledMassDelete"
         color="brand"

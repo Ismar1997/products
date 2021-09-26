@@ -80,7 +80,7 @@
         </v-col>
         <v-col cols="6" sm="10" md="10" lg="11">
           <v-select
-            id="#product_type"
+            id="#productType"
             v-model="productType"
             :items="productTypes"
             label="Type Switcher"
