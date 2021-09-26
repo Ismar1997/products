@@ -4,7 +4,7 @@
       :sku="sku"
       :name="name"
       :price="priceInString"
-      :product_type="selectedProductType"
+      :productType="productType"
       :size="convertNumberToString(size)"
       :height="convertNumberToString(height)"
       :width="convertNumberToString(width)"
@@ -81,7 +81,7 @@
         <v-col cols="6" sm="10" md="10" lg="11">
           <v-select
             id="#productType"
-            v-model="selectedProductType"
+            v-model="productType"
             :items="productTypes"
             label="Type Switcher"
             dense
@@ -91,8 +91,8 @@
       </v-row>
     </v-container>
 
-    <div v-if="selectedProductType">
-      <v-container fluid v-if="selectedProductType === 'DVD'">
+    <div v-if="productType">
+      <v-container fluid v-if="productType === 'Dvd'">
         <v-card>
           <v-col>
             <v-row justify="start" align="center">
@@ -120,7 +120,7 @@
           </v-col>
         </v-card>
       </v-container>
-      <v-container fluid v-if="selectedProductType === 'FURNITURE'">
+      <v-container fluid v-if="productType === 'Furniture'">
         <v-card>
           <v-col>
             <v-row justify="start" align="center">
@@ -186,7 +186,7 @@
           </v-col>
         </v-card>
       </v-container>
-      <v-container fluid v-if="selectedProductType === 'BOOK'">
+      <v-container fluid v-if="productType === 'Book'">
         <v-card>
           <v-col>
             <v-row justify="start" align="center">
@@ -253,11 +253,15 @@ export default class AddProduct extends Vue {
       (v.length <= 6 && v.length > 0) || "Price must be less than 6 numbers",
   ];
 
-  productTypes = [ProductType.DVD, ProductType.BOOK, ProductType.FURNITURE];
+  productTypes = [
+    this.capitalize(ProductType.DVD),
+    this.capitalize(ProductType.BOOK),
+    this.capitalize(ProductType.FURNITURE),
+  ];
 
-  selectedProductType: ProductType | null = null;
+  productType: ProductType | null = null;
 
-  @Watch("selectedProductType")
+  @Watch("productType")
   onSelectedProductTypeChanged(newValue: ProductType) {
     // Reset values when product type is changed
     this.size = "";
@@ -266,10 +270,11 @@ export default class AddProduct extends Vue {
     this.length = "";
     this.weight = "";
 
-    if (newValue === ProductType.DVD) this.decription = "Please, provide size";
-    if (newValue === ProductType.BOOK)
+    if (newValue === this.capitalize(ProductType.DVD))
+      this.decription = "Please, provide size";
+    if (newValue === this.capitalize(ProductType.BOOK))
       this.decription = "Please, provide weight";
-    if (newValue === ProductType.FURNITURE)
+    if (newValue === this.capitalize(ProductType.FURNITURE))
       this.decription = "Please, provide dimensions";
   }
 
@@ -294,7 +299,11 @@ export default class AddProduct extends Vue {
     this.width = "";
     this.length = "";
     this.weight = "";
-    this.selectedProductType = null;
+    this.productType = null;
+  }
+
+  capitalize(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   }
 }
 </script>

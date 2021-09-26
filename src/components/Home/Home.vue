@@ -51,7 +51,7 @@
             </v-card-text>
             <v-card-text class="text-center pa-1 pb-12 font-weight-light">
               <span class="white--text" style="font-size: 20px">{{
-                product.product_type
+                productType(product)
               }}</span>
             </v-card-text>
           </v-card>
@@ -97,6 +97,13 @@ export default class Home extends Vue {
 
     if (product.checked && i === -1) this.selectedProducts.push(product);
     else if (!product.checked && i !== -1) this.selectedProducts.splice(i, 1);
+  }
+
+  productType(product: Product) {
+    return (
+      product.product_type.charAt(0).toUpperCase() +
+      product.product_type.slice(1).toLowerCase()
+    );
   }
 
   get productList() {

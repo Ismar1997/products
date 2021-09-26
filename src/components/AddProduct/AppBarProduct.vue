@@ -30,7 +30,7 @@ export default class AppBarProduct extends Vue {
   @Prop() sku!: string;
   @Prop() name!: string;
   @Prop() price!: string;
-  @Prop() product_type!: ProductType;
+  @Prop() productType!: ProductType;
   @Prop() size!: ProductType;
   @Prop() height!: ProductType;
   @Prop() width!: ProductType;
@@ -48,12 +48,12 @@ export default class AppBarProduct extends Vue {
       sku: this.sku,
       name: this.name,
       price: this.price,
-      product_type: this.product_type,
-      size: this.size,
-      height: this.height,
-      width: this.width,
-      length: this.length,
-      weight: this.weight,
+      product_type: this.productType.toUpperCase(),
+      size: this.size ? this.size : null,
+      height: this.height ? this.height : null,
+      width: this.width ? this.width : null,
+      length: this.length ? this.length : null,
+      weight: this.weight ? this.weight : null,
     } as Product);
     this.$emit("productSaved");
     this.changeRoute();
@@ -73,7 +73,7 @@ export default class AppBarProduct extends Vue {
     return this.price;
   }
   get compProductType() {
-    return this.product_type;
+    return this.productType;
   }
 
   get disabledButton() {
