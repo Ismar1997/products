@@ -42,7 +42,7 @@ export default class AppBarHome extends Vue {
   deleteProducts() {
     if (this.selectedProducts && this.selectedProducts.length > 0)
       this.selectedProducts.forEach((p: Product) => {
-        this.deleteProduct({ id: p.id });
+        this.deleteProduct({ product: this.selectedProducts });
         this.$emit("deletedProduct");
       });
   }

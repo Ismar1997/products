@@ -13,8 +13,8 @@
       >
         <span class="white--text">Save</span>
       </v-btn>
-      <v-btn color="brand">
-        <span class="white--text" @click="changeRoute">Cancel</span>
+      <v-btn color="brand" @click="changeRoute">
+        <span class="white--text">Cancel</span>
       </v-btn>
     </v-app-bar>
   </div>
@@ -30,7 +30,7 @@ export default class AppBarProduct extends Vue {
   @Prop() sku!: string;
   @Prop() name!: string;
   @Prop() price!: string;
-  @Prop() productType!: ProductType;
+  @Prop() productType!: string;
   @Prop() size!: ProductType;
   @Prop() height!: ProductType;
   @Prop() width!: ProductType;
@@ -42,8 +42,6 @@ export default class AppBarProduct extends Vue {
   createNewProductAction!: (data: Product) => Promise<void>;
 
   createNewProduct() {
-    console.log(this.size);
-
     this.createNewProductAction({
       sku: this.sku,
       name: this.name,
@@ -77,7 +75,17 @@ export default class AppBarProduct extends Vue {
   }
 
   get disabledButton() {
-    if (!this.valid || !this.compProductType) return true;
+    if (
+      !this.valid ||
+      !this.compProductType ||
+      (this.productType === "Book" && this.weight.length === 0) ||
+      (this.productType === "Furniture" &&
+        this.height.length === 0 ||
+        this.width.length === 0 ||
+        this.length.length === 0) ||
+      (this.productType === "Dvd" && this.size.length === 0)
+    )
+      return true;
     return false;
   }
 }

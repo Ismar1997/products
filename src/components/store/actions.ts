@@ -7,7 +7,8 @@ export const actions: ActionTree<HomeState, RootState> = {
   async fetchProducts({ commit }) {
     try {
       const response = await apiUrl.get("read.php");
-      commit("setProducts", response.data);
+      if (response.status === 200 && !response.data.message)
+        commit("setProducts", response.data);
       return response.data;
     } catch (error) {
       throw new Error(`${error}`);
@@ -17,6 +18,7 @@ export const actions: ActionTree<HomeState, RootState> = {
   async createProduct({ commit }, data: Product) {
     try {
       const response = await apiUrl.post("create.php", data);
+
       if (response.status === 200)
         commit("addNewProduct", response.data.product);
       return response.data;
@@ -25,11 +27,16 @@ export const actions: ActionTree<HomeState, RootState> = {
     }
   },
 
-  async deleteProduct({ commit }, data: DeleteRequest) {
+  deleteProduct({ commit }, data: DeleteRequest) {
     try {
-      const response = await apiUrl.delete("delete.php", { data });
-      commit("deleteProduct", data.id);
-      return response.data;
+      data.product.forEach(async (p: Product) => {
+        delete p.checked;
+        const response = await apiUrl.delete("delete.php", {
+          data: { id: p.id },
+        });
+        commit("deleteProduct", p.id);
+        return response.data;
+      });
     } catch (error) {
       throw new Error(`${error}`);
     }

@@ -92,7 +92,7 @@ export default class Home extends Vue {
 
   addProductToSelected(product: Product) {
     const i = this.selectedProducts.findIndex(
-      (p: Product) => p.sku === product.sku
+      (p: Product) => p.id === product.id
     );
 
     if (product.checked && i === -1) this.selectedProducts.push(product);

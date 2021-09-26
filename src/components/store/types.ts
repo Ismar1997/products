@@ -23,5 +23,5 @@ export enum ProductType {
 }
 
 export interface DeleteRequest {
-  id: string;
+  product: Product[];
 }
