@@ -78,12 +78,13 @@ export default class AppBarProduct extends Vue {
   get disabledButton() {
     if (
       !this.valid ||
-      !this.compProductType ||
-      (this.productType === "Book" && this.weight.length === 0) ||
-      (this.productType === "Furniture" && this.height.length === 0) ||
-        this.width.length === 0 ||
-        this.length.length === 0 ||
-      (this.productType === "Dvd" && this.size.length === 0)
+      !this.compProductType 
+     //||
+      // (this.productType === "Book" && this.weight.length === 0) ||
+      // (this.productType === "Furniture" && this.height.length === 0) ||
+      //   this.width.length === 0 ||
+      //   this.length.length === 0 ||
+      // (this.productType === "Dvd" && this.size.length === 0)
     )
       return true;
     return false;
