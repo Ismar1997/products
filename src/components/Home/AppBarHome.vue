@@ -32,19 +32,18 @@ export default class AppBarHome extends Vue {
   @Action("home/deleteProduct")
   deleteProduct!: (data: DeleteRequest) => Promise<void>;
 
-  changeRoute():void {
+  changeRoute(): void {
     this.$router.push("addproduct");
   }
 
-  get disabledMassDelete():boolean {
+  get disabledMassDelete(): boolean {
     return !this.selectedProducts || this.selectedProducts.length === 0;
   }
 
-  deleteProducts():void {
+  deleteProducts(): void {
     if (this.selectedProducts && this.selectedProducts.length > 0)
-        this.deleteProduct({ product: this.selectedProducts });
-        this.$emit("deletedProduct");
-    
+      this.deleteProduct({ product: this.selectedProducts });
+    this.$emit("deletedProduct");
   }
 }
 </script>

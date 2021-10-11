@@ -5,6 +5,7 @@ export const mutations: MutationTree<HomeState> = {
   setProducts(state: HomeState, payload: Product[]) {
     state.products = payload;
   },
+
   addNewProduct(state: HomeState, payload: Product) {
     if (state.products.length === 0) {
       state.products.push(payload);
@@ -15,8 +16,9 @@ export const mutations: MutationTree<HomeState> = {
       if (i === -1) state.products.push(payload);
     }
   },
+
   deleteProduct(state: HomeState, id: string) {
-    const i = state.products.findIndex((p: Product) => p.id === id);    
+    const i = state.products.findIndex((p: Product) => p.id === id);
     state.products.splice(i, 1);
   },
 };
