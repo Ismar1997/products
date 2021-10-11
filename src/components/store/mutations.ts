@@ -16,7 +16,7 @@ export const mutations: MutationTree<HomeState> = {
     }
   },
   deleteProduct(state: HomeState, id: string) {
-    const i = state.products.findIndex((p: Product) => p.sku === id);
+    const i = state.products.findIndex((p: Product) => p.id === id);    
     state.products.splice(i, 1);
   },
 };

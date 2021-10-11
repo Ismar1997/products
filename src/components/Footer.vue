@@ -10,7 +10,7 @@
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
-        {{ new Date().getFullYear() }} - Ismar Fazlić
+        {{ new Date().getFullYear() }} - Ismar Fazlić --v.2.0
       </v-card-text>
     </v-card>
   </v-footer>

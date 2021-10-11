@@ -30,11 +30,11 @@ export const actions: ActionTree<HomeState, RootState> = {
   deleteProduct({ commit }, data: DeleteRequest) {
     try {
       data.product.forEach(async (p: Product) => {
-        delete p.checked;
         const response = await apiUrl.delete("delete.php", {
           data: { id: p.id },
         });
         commit("deleteProduct", p.id);
+
         return response.data;
       });
     } catch (error) {
