@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid pa-0 ma-0ss>
     <AppBarProduct
       :sku="sku"
       :name="name"
@@ -215,7 +215,7 @@
         </v-card>
       </v-container>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -262,7 +262,7 @@ export default class AddProduct extends Vue {
   productType: ProductType | null = null;
 
   @Watch("productType")
-  onSelectedProductTypeChanged(newValue: ProductType) {
+  onSelectedProductTypeChanged(newValue: ProductType): void {
     // Reset values when product type is changed
     this.size = "";
     this.height = "";
@@ -278,19 +278,20 @@ export default class AddProduct extends Vue {
       this.decription = "Please, provide dimensions";
   }
 
-  convertPriceToString() {
+  convertPriceToString(): void {
     if (this.price !== 1 || this.price.toString().length !== 0) {
       this.priceInString = `${this.price}$`;
     }
   }
 
-  convertNumberToString(num: number) {
+  convertNumberToString(num: number): string {
     if (num !== 1 || num.toString().length !== 0) {
       return `${num}`;
     }
+    return `${num}`;
   }
 
-  resetInputFields() {
+  resetInputFields(): void {
     this.sku = "";
     this.name = "";
     this.price = 1;
@@ -302,7 +303,7 @@ export default class AddProduct extends Vue {
     this.productType = null;
   }
 
-  capitalize(string: string) {
+  capitalize(string: string): string {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   }
 }
@@ -317,4 +318,5 @@ export default class AddProduct extends Vue {
   margin-left: 30px;
   margin-top: 30px;
 }
+
 </style>

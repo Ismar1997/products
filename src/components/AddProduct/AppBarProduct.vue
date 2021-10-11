@@ -42,7 +42,7 @@ export default class AppBarProduct extends Vue {
   @Action("home/createProduct")
   createNewProductAction!: (data: Product) => Promise<void>;
 
-  createNewProduct() {
+  createNewProduct(): void {
     this.createNewProductAction({
       sku: this.sku,
       name: this.name,
@@ -58,24 +58,24 @@ export default class AppBarProduct extends Vue {
     this.changeRoute();
   }
 
-  changeRoute() {
+  changeRoute(): void {
     this.$router.push("/");
   }
 
-  get compSku() {
+  get compSku(): string {
     return this.sku;
   }
-  get compName() {
+  get compName(): string {
     return this.name;
   }
-  get compPrice() {
+  get compPrice(): string {
     return this.price;
   }
-  get compProductType() {
+  get compProductType(): string {
     return this.productType;
   }
 
-  get disabledButton() {
+  get disabledButton(): boolean {
     if (
       !this.valid ||
       !this.compProductType 

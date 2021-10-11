@@ -90,7 +90,7 @@ export default class Home extends Vue {
   @Getter("home/getProducts")
   products!: Product[];
 
-  addProductToSelected(product: Product) {
+  addProductToSelected(product: Product): void {
     const i = this.selectedProducts.findIndex(
       (p: Product) => p.id === product.id
     );
@@ -99,22 +99,22 @@ export default class Home extends Vue {
     else if (!product.checked && i !== -1) this.selectedProducts.splice(i, 1);
   }
 
-  productType(product: Product) {
+  productType(product: Product): string {
     return (
       product.product_type.charAt(0).toUpperCase() +
       product.product_type.slice(1).toLowerCase()
     );
   }
 
-  get productList() {
+  get productList(): Product[] {
     return this.products;
   }
 
-  resetSelectedProducts() {
+  resetSelectedProducts(): void {
     this.selectedProducts = [];
   }
 
-  created() {
+  created(): void {
     this.fetchProducts().then(() => (this.loading = false));
   }
 }
